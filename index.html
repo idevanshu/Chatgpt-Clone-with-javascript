@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Import Tailwind CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.7/tailwind.min.css">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/vs2015.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with AI</title>
+
+</head>
+
+<body class="bg-gray-700">
+
+    <section class="flex flex-col h-screen">
+        <header class="bg-gray-900 border-b border-gray-200 px-4 py-3">
+            <div class="flex justify-between items-center">
+                <h1 class="text-3xl italic font-serif text-blue-500 font-bold">Chat</h1>
+                <div>
+                    <button id="newChat" class="ml-auto px-3 py-2 mx-2 italic font-serif rounded-lg text-xl border border-red-500 text-red-500 hover:bg-red-500 hover:text-white w-32">Clear</button>
+                    <!-- Button to open the modal -->
+                    <button class="px-3 py-2 italic mx-2 font-serif rounded-lg text-xl border border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white" onclick="document.getElementById('myModal').classList.add('opacity-100'); document.getElementById('myModal').classList.remove('opacity-0'); document.getElementById('myModal').style.pointerEvents = 'auto';">
+                        History
+                    </button>
+                </div>
+            </div>
+            
+
+            <!-- The modal -->
+            <div id="myModal"
+                class="modal fixed w-full h-full top-0 left-0 flex items-center justify-center opacity-0 pointer-events-none">
+                <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+
+                <div
+                    class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+                    <div class="modal-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50"
+                        onclick="document.getElementById('myModal').classList.remove('opacity-100'); document.getElementById('myModal').classList.add('opacity-0'); document.getElementById('myModal').style.pointerEvents = 'none';">
+                        <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                            viewBox="0 0 18 18">
+                            <path
+                                d="M18 1.5l-1.5-1.5-7.5 7.5-7.5-7.5-1.5 1.5 7.5 7.5-7.5 7.5 1.5 1.5 7.5-7.5 7.5 7.5 1.5-1.5-7.5-7.5z" />
+                        </svg>
+                        <span class="text-sm">(Esc)</span>
+                    </div>
+
+                    <!-- Add your modal content here -->
+                    <div class="modal-content py-4 text-left px-6 bg-gray-700">
+                        <h1 class="text-3xl font-italic mb-4 font-serif text-white mx-2 py-2">History</h1>
+                        <p class="mb-4 mx-2 text-white text-xl" id="history"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="history"></div>
+        </header>
+
+
+
+        <main class="flex-1 p-4 flex flex-col-reverse overflow-y-auto">
+            <p id="output" class="text-white text-3xl font-serif text-center"></p>
+          </main>
+          
+
+        <footer class="bg-black border-t border-gray-200 px-4 py-3">
+            <div class="flex items-center">
+                <textarea id="input"
+                    class="flex-1 border border-gray-300 rounded-lg py-2 px-4 mr-2 resize-y w-full h-16"
+                    style="resize: vertical;" rows="1" cols="15"></textarea>
+                <button id="submit"
+                    class="px-4 py-2 rounded-lg bg-green-500 text-white italic font-serif text-xl">➢</button>
+            </div>
+        </footer>
+
+    </section>
+
+    <div class="text-center text-gray-500 text-sm mt-4 font-serif font-bold">Made by idevanshu</div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
